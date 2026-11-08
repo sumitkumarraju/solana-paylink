@@ -79,7 +79,17 @@ export default function NewInvoicePage() {
 
       <form onSubmit={onSubmit} className="mt-8 flex flex-col gap-5" noValidate>
         <Field label="Your Solana wallet address" name="recipient" error={errors.recipient}>
-          <input id="recipient" name="recipient" className={inputClass} autoComplete="off" required />
+          {/* Phone keyboards would capitalise or "correct" the address and break it. */}
+          <input
+            id="recipient"
+            name="recipient"
+            className={inputClass}
+            autoComplete="off"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
+            required
+          />
         </Field>
         <Field label="Amount (USDC)" name="amount" error={errors.amount}>
           <input id="amount" name="amount" inputMode="decimal" className={inputClass} required />
@@ -91,7 +101,8 @@ export default function NewInvoicePage() {
           <textarea id="description" name="description" maxLength={500} rows={3} className={inputClass} required />
         </Field>
         <Field label="Due date (optional)" name="dueDate" error={errors.dueDate}>
-          <input id="dueDate" name="dueDate" type="date" className={inputClass} />
+          {/* iOS Safari gives date inputs a fixed native width that overflows narrow screens. */}
+          <input id="dueDate" name="dueDate" type="date" className={`${inputClass} min-h-[2.625rem] min-w-0 appearance-none text-left`} />
         </Field>
 
         {formError && (

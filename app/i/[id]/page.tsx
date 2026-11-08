@@ -64,7 +64,9 @@ function PaySection({ invoice }: { invoice: Invoice }) {
       <h2 className="self-start font-medium">Pay with a Solana wallet</h2>
       <PaymentQr url={url} />
       <p className="text-center text-sm text-zinc-600 dark:text-zinc-400">
-        Scan with Phantom, Solflare or another Solana Pay wallet. On your phone, tap the button instead.
+        Scan with the scanner on your wallet&apos;s home screen (Phantom, Solflare or another Solana Pay wallet), not
+        its Send screen. The amount and token fill in for you. On a phone with a wallet app installed, tap the
+        button instead.
       </p>
       <a
         href={url}
