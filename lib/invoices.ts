@@ -58,6 +58,12 @@ function isCalendarDate(value: string): boolean {
   return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
 
+// The server does not know the freelancer's time zone. The earliest "today"
+// on Earth (UTC-12) is at most one day behind the UTC date, so accept that.
+function earliestTodayAnywhere(): string {
+  return new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 export function validateInvoiceInput(input: NewInvoiceInput) {
   const errors: Record<string, string> = {};
 
@@ -91,6 +97,8 @@ export function validateInvoiceInput(input: NewInvoiceInput) {
     const raw = typeof input.dueDate === "string" ? input.dueDate : "";
     if (!isCalendarDate(raw)) {
       errors.dueDate = "Due date must be a real date (YYYY-MM-DD).";
+    } else if (raw < earliestTodayAnywhere()) {
+      errors.dueDate = "Due date cannot be in the past.";
     } else {
       dueDate = raw;
     }
