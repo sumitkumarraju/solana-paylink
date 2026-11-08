@@ -2,7 +2,7 @@ export type Cluster = "devnet" | "mainnet-beta";
 
 // Circle's official USDC mints.
 const USDC_MINT: Record<Cluster, string> = {
-  devnet: "4zMMC9srt5Ri5X14GAgXhaHii3GfHRaWTUEbPnHKXn6Y",
+  devnet: "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
   "mainnet-beta": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
 };
 
