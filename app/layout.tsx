@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PayLink",
-  description: "Stablecoin payment links on Solana",
+  description: "Get paid in USDC on Solana with a link. Payments verified on-chain.",
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

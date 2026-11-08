@@ -59,13 +59,17 @@ export default function NewInvoicePage() {
             Copy
           </button>
         </div>
-        <button
-          type="button"
-          onClick={() => setCreated(null)}
-          className="mt-6 text-sm underline"
-        >
-          Create another invoice
-        </button>
+        <div className="mt-6 flex items-center gap-5">
+          <a
+            href={`/i/${created.id}`}
+            className="rounded-md bg-zinc-900 px-4 py-2 font-medium text-white dark:bg-zinc-100 dark:text-zinc-900"
+          >
+            View invoice
+          </a>
+          <button type="button" onClick={() => setCreated(null)} className="text-sm underline">
+            Create another invoice
+          </button>
+        </div>
       </main>
     );
   }
